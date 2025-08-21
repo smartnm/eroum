@@ -5,14 +5,14 @@ on:
     branches:
       - main
     paths:
-      - 'eroum.js'
-      - 'eroum.css'
+      - 'external.js'
+      - 'external.css'
 
 jobs:
   purge:
     runs-on: ubuntu-latest
     steps:
-      - name: Purge jsDelivr CDN
+      - name: Purge jsDelivr CDN cache
         run: |
-          curl -X GET "https://purge.jsdelivr.net/gh/smartnm/eroum@main/eroum.js"
-          curl -X GET "https://purge.jsdelivr.net/gh/smartnm/eroum@main/eroum.css"
+          curl -X GET "https://purge.jsdelivr.net/gh/smartnm/eroum@main/external.js"
+          curl -X GET "https://purge.jsdelivr.net/gh/smartnm/eroum@main/external.css"
