@@ -1,1 +1,77 @@
+/* Str 250821 sic */
+/* 기본: 모바일에서는 줄바꿈 안 함 */
+.br-pc {
+  display: none;
+}
 
+/* 확인 안내 공통 박스 */
+.notice-confirm {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  padding: 14px 18px;
+  background: #fff;
+  border: 1px solid #d9e6ff;
+  border-radius: 12px;
+  color: #1f2937;
+  font-size: 15px;
+  line-height: 1.55;
+  margin: 1em 0;
+
+  /* 모션: 로드 시 자동 재생 */
+  animation: noticeSlideIn .5s ease-out both;
+  /* (필요 시 살짝 지연) */
+  animation-delay: .08s;
+}
+
+@keyframes noticeSlideIn {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* 아이콘 영역 */
+.notice-confirm .icon {
+  flex: 0 0 40px;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: #2a5dbf;
+  border: 1px solid #2a5dbf;
+  display: flex; align-items: center; justify-content: center;
+}
+.notice-confirm .icon svg {
+  width: 15px; height: 10px; display: block;
+}
+
+/* 텍스트 영역 */
+.notice-confirm .message {
+  flex: 1 1 auto;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+.notice-confirm .message .lead { font-weight: 700; }
+.notice-confirm .message p { margin: 0; color: #202e70; }
+.notice-confirm .message .em { display: unset; font-weight: 700; color: #0d2a73; }
+
+/* PC 해상도 이상에서는 줄바꿈 */
+@media (min-width: 1025px) {
+  .br-pc {
+    display: block;
+    height: 0; 
+    margin: 0;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .notice-confirm { padding: 12px 14px; border-radius: 10px; }
+  .notice-confirm .icon { width: 36px; height: 36px; }
+  .notice-confirm .icon svg { width: 15px; height: 10px; }
+  .notice-confirm .message { font-size: 14.5px; }
+}
+
+/* 모션 민감 사용자 배려 */
+@media (prefers-reduced-motion: reduce) {
+  .notice-confirm { animation: none; }
+}
+/* End 250821 sic */
